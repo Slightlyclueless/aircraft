@@ -7,7 +7,6 @@ import { InputField } from 'instruments/src/MFD/pages/common/InputField';
 import { TopTabNavigator, TopTabNavigatorPage } from 'instruments/src/MFD/pages/common/TopTabNavigator';
 
 import './MfdFmsDataAirport.scss';
-
 interface MfdFmsDataAirportProps extends AbstractMfdPageProps {}
 
 export class MfdFmsDataAirport extends FmsPage<MfdFmsDataAirportProps> {
@@ -22,6 +21,8 @@ export class MfdFmsDataAirport extends FmsPage<MfdFmsDataAirportProps> {
       return;
     }
   }
+
+  private async airportIdentModified() {}
 
   public onAfterRender(node: VNode): void {
     super.onAfterRender(node);
@@ -54,14 +55,20 @@ export class MfdFmsDataAirport extends FmsPage<MfdFmsDataAirportProps> {
           >
             <TopTabNavigatorPage>
               {/* DATABASE ARPTs */}
-              <div style="display: flex; flex-direction: row; align-self: center;">
-                <div style="flex-direction: row; width: 40%; justify-content: space-between;">
-                  <div class="mfd-label mfd-airport-ident-row">ARPT IDENT</div>
+              <div class="mfd-airport-database-grid">
+                <div class="mfd-airport-airport-ident-grid">
+                  <div class="mfd-label" style="padding-top: 8px;">
+                    ARPT IDENT
+                  </div>
                   <div>
                     <InputField<string>
                       dataEntryFormat={new AirportFormat()}
+                      dataHandlerDuringValidation={async (v) => {
+                        this.airportIdent.set(v);
+                        this.onNewData();
+                      }}
                       value={this.airportIdent}
-                      containerStyle="width: 125px;"
+                      containerStyle="width: 90px;"
                       alignText="center"
                       errorHandler={(e) => this.props.fmcService.master?.showFmsErrorMessage(e)}
                       hEventConsumer={this.props.mfd.hEventConsumer}

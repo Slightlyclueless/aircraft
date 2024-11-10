@@ -1,0 +1,12 @@
+@import "../../../../MsfsAvionicsCommon/definitions";
+
+.mfd-airport-database-grid {
+  padding-left: 175px;
+  display: grid;
+  grid-template-columns: auto;
+  align-items: center;
+}
+.mfd-airport-airport-ident-grid {
+  display: grid;
+  grid-template-columns: 150px auto;
+}
