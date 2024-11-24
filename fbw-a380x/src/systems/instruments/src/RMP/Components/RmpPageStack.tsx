@@ -20,7 +20,7 @@ export interface RmpPageStackProps extends ComponentProps {
   bus: EventBus;
 }
 
-type Pages = 'vhf' | 'transponder';
+type Pages = 'vhf' | 'transponder' | 'menu';
 
 type PageData = {
   route: string;
@@ -35,6 +35,10 @@ export class RmpPageStack extends DisplayComponent<RmpPageStackProps> {
     },
     transponder: {
       route: '/transponder',
+      ref: FSComponent.createRef<RmpPage>(),
+    },
+    menu: {
+      route: '/menu',
       ref: FSComponent.createRef<RmpPage>(),
     },
   };
@@ -65,6 +69,9 @@ export class RmpPageStack extends DisplayComponent<RmpPageStackProps> {
           break;
         case SystemKeys.SquawkPage:
           this.navigateTo('/transponder');
+          break;
+        case SystemKeys.MenuPage:
+          this.navigateTo('/menu');
           break;
       }
     });
