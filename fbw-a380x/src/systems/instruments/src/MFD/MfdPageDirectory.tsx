@@ -32,6 +32,7 @@ import { MfdFmsDataDebug } from 'instruments/src/MFD/pages/FMS/DATA/MfdFmsDataDe
 import { MfdSurvControls } from 'instruments/src/MFD/pages/SURV/MfdSurvControls';
 import { MfdSurvStatusSwitching } from 'instruments/src/MFD/pages/SURV/MfdSurvStatusSwitching';
 import { MfdFmsDataAirport } from 'instruments/src/MFD/pages/FMS/DATA/MfdFmsDataAirport';
+import { MfdFmsDataRoute } from 'instruments/src/MFD/pages/FMS/DATA/MfdFmsDataRoute';
 
 export function pageForUrl(
   url: string,
@@ -95,6 +96,8 @@ export function pageForUrl(
       return <MfdFmsDataStatus pageTitle="STATUS" bus={bus} mfd={mfd} fmcService={fmcService} />;
     case 'fms/data/debug':
       return <MfdFmsDataDebug pageTitle="DEBUG" bus={bus} mfd={mfd} fmcService={fmcService} />;
+    case 'fms/data/route':
+      return <MfdFmsDataRoute pageTitle="ROUTE" bus={bus} mfd={mfd} fmcService={fmcService} />;
     case 'fms/data/airport':
       return <MfdFmsDataAirport pageTitle="AIRPORT" bus={bus} mfd={mfd} fmcService={fmcService} />;
     case 'surv/controls':
